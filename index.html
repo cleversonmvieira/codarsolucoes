@@ -4,75 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Sistema</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/favicon.png" type="image/png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Estilizando o cabeçalho */
-        .header {
-            background-color: #6f42c1; /* Cor roxa */
-            padding: 10px 0;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
+    
+    <!-- Custom CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
 
-        .header img {
-            margin-left: 20px;
-        }
-
-        /* Estilizando o formulário de login */
-        .login-form {
-            border: 1px solid #ccc;
-            padding: 20px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 0px; /* Borda reta */
-        }
-
-        /* Estilizando o rodapé */
-        .footer {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
 
     <!-- Cabeçalho -->
     <header class="header">
-        <!-- Imagem à esquerda -->
-        <img src="https://codarsolucoes.com.br/public/images/logo.png" alt="Logo" width="50" height="50">
-        <!-- Faixa roxa ao lado da imagem -->
-        <div class="w-100 ml-3"></div>
+        <!--<img src="assets/img/logo.png" alt="Logo" width="150">-->
+        <div class="w-100 ml-3">Codar Soluções | Central de Acesso</div>
     </header>
 
     <!-- Conteúdo principal -->
-    <main class="container mt-5">
+    <main class="container mt-5 d-flex flex-column justify-content-center align-items-center">
         <div class="row">
-            <!-- Seção de explicação -->
             <div class="col-md-6">
-                <img src="sistema.png" alt="Imagem do Sistema" class="img-fluid mb-3">
-                <h2>Sobre o Sistema</h2>
-                <p>Este sistema foi desenvolvido para fornecer uma plataforma intuitiva e eficiente para gerenciar as operações da empresa...</p>
+                <img src="assets/img/sistema.png" alt="Imagem do Sistema" class="img-fluid mb-3">
+                <h2>Sistema de Controle de Estoque</h2>
+                <p class="text-justify">Bem-vindo(a) ao Sistema de Controle de Estoque da Codar Soluções, uma ferramenta completa para gerenciar seu inventário de forma eficiente. Controle o fluxo de produtos, receba alertas automáticos e acompanhe tudo em tempo real. Simplifique a gestão de estoque e tome decisões estratégicas com relatórios detalhados.</p>
+                <p class="text-justify"><strong>Credenciais de demonstração</strong></p>
+                <p class="text-justify"><strong>Usuário</strong>: demo <br/> <strong>Senha</strong>: 123456</p>
             </div>
-            <!-- Formulário de Login -->
             <div class="col-md-5 offset-md-1">
                 <div class="login-form">
-                    <h3>Login</h3>
-                    <form>
+                    <!--<h3>Login</h3>-->
+                    <img src="assets/img/logo.png" alt="Logo" width="250">
+                    <form id="login-form" method="POST" action="process_login.php">
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Digite seu email">
+                            <label for="email">Usuário</label>
+                            <input type="email" class="form-control rounded-0" id="user" name="user" placeholder="Digite seu usuário" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Senha</label>
-                            <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+                            <input type="password" class="form-control rounded-0" id="password" name="password" placeholder="Digite sua senha" required>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                        <div class="form-group">
+                            <a href="#" id="forgot-password">Esqueceu a sua senha?</a>
+                        </div>
+                        <!-- CAPTCHA -->
+                        <div class="form-group recaptcha-container">
+                            <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block rounded-0">Entrar</button>
                     </form>
                 </div>
             </div>
@@ -88,5 +72,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/scripts.js"></script>
 </body>
 </html>
