@@ -1,0 +1,61 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: #343a40;
+    color: white;
+    padding: 0.5rem 1rem;
+}
+
+.navbar {
+    background-color: #f8f9fa;
+}
+
+.navbar-nav .nav-link {
+    margin-right: 1rem;
+}
+
+.card {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0px; /* Borda reta */
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+.welcome-message h1 {
+    font-size: 2rem;
+}
+
+.welcome-message p {
+    font-size: 1.2rem;
+}
+
+.card {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card .btn {
+    color: #fff;
+}
+
+.card .btn:hover {
+    color: #333;
+}
+
+.notifications i {
+    font-size: 1.5rem;
+}
+
+.user-profile img {
+    border-radius: 50%;
+}
