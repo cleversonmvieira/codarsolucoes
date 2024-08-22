@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Controle de Estoque</title>
-    
+
     <!-- Favicon -->
     <link rel="icon" href="assets/img/favicon.png" type="image/png">
 
@@ -13,37 +14,52 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Custom CSS -->
     <link href="assets/css/dashboard.css" rel="stylesheet">
 
+    <!-- Sweet Alert -->
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+
 </head>
+
 <body>
 
     <!-- Cabeçalho -->
-    <header class="header d-flex align-items-center justify-content-between p-3 bg-dark text-white">
-        <img src="assets/img/logo.png" alt="Logo" width="150">
-        <div class="d-flex align-items-center">
-            <input type="text" class="form-control form-control-sm mr-3" placeholder="Pesquisar...">
-            <div class="notifications">
-                <i class="fas fa-bell"></i>
-            </div>
-            <div class="user-profile ml-3">
-                <img src="assets/img/user-profile.png" alt="User Profile" width="40" class="rounded-circle">
+    <header class="header p-3 text-dark">
+        <div class="container d-flex align-items-center justify-content-between">
+            <img src="assets/img/logo.png" alt="Logo" width="220">
+            <div class="d-flex align-items-center">
+                <div class="user-profile dropdown ml-3">
+                    <img src="assets/img/user-profile.png" alt="User Profile" width="40"
+                        class="rounded-circle dropdown-toggle" id="userDropdown" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#"><i class="fas fa-user-circle mr-2"></i>Perfil</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Configurações</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt mr-2"></i>Sair</a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
+
     <!-- Menu Horizontal -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="cadastrosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="cadastrosDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Cadastros
                         </a>
                         <div class="dropdown-menu" aria-labelledby="cadastrosDropdown">
@@ -54,7 +70,8 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="movimentacoesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="movimentacoesDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Movimentações
                         </a>
                         <div class="dropdown-menu" aria-labelledby="movimentacoesDropdown">
@@ -63,7 +80,8 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="parametrosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="parametrosDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Parâmetros
                         </a>
                         <div class="dropdown-menu" aria-labelledby="parametrosDropdown">
@@ -72,7 +90,8 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="relatoriosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="relatoriosDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Relatórios
                         </a>
                         <div class="dropdown-menu" aria-labelledby="relatoriosDropdown">
@@ -85,75 +104,83 @@
                         </div>
                     </li>
                 </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link logout-btn" href="#" id="logoutBtn" role="button">
+                            Sair do Sistema
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 
+
     <!-- Conteúdo Principal -->
     <main class="container mt-4">
         <div class="welcome-message text-center mb-4">
-            <h1>Olá, Cleverson M. Vieira! Bem-vindo(a) ao SisCE!</h1>
+            <h1>Bem-vindo(a) ao Sistema de Controle de Estoque!</h1>
             <p id="current-date-time"></p>
         </div>
 
         <div class="row">
             <!-- Card 1 -->
             <div class="col-md-4 mb-3">
-                <div class="card text-center shadow-sm border-0" style="background-color: #8612AD; color: #fff;">
+                <div class="card text-center">
                     <div class="card-body">
                         <i class="fas fa-users fa-3x mb-3"></i>
                         <h5 class="card-title">Usuários</h5>
-                        <a href="usuarios.html" class="btn btn-light text-dark rounded-0">Listar Usuários</a>
+                        <a href="usuarios.html" class="btn text-dark rounded-0">Listar Usuários</a>
                     </div>
                 </div>
             </div>
             <!-- Card 2 -->
             <div class="col-md-4 mb-3">
-                <div class="card text-center shadow-sm border-0" style="background-color: #70BDE8; color: #fff;">
+                <div class="card text-center">
                     <div class="card-body">
                         <i class="fas fa-truck fa-3x mb-3"></i>
                         <h5 class="card-title">Fornecedores</h5>
-                        <a href="fornecedores.html" class="btn btn-light text-dark rounded-0">Listar Fornecedores</a>
+                        <a href="fornecedores.html" class="btn text-dark rounded-0">Listar Fornecedores</a>
                     </div>
                 </div>
             </div>
             <!-- Card 3 -->
             <div class="col-md-4 mb-3">
-                <div class="card text-center shadow-sm border-0" style="background-color: #8612AD; color: #fff;">
+                <div class="card text-center">
                     <div class="card-body">
                         <i class="fas fa-cube fa-3x mb-3"></i>
                         <h5 class="card-title">Produtos</h5>
-                        <a href="produtos.html" class="btn btn-light text-dark rounded-0">Listar Produtos</a>
+                        <a href="produtos.html" class="btn text-dark rounded-0">Listar Produtos</a>
                     </div>
                 </div>
             </div>
             <!-- Card 4 -->
             <div class="col-md-4 mb-3">
-                <div class="card text-center shadow-sm border-0" style="background-color: #70BDE8; color: #fff;">
+                <div class="card text-center">
                     <div class="card-body">
                         <i class="fas fa-file-alt fa-3x mb-3"></i>
                         <h5 class="card-title">Notas Fiscais</h5>
-                        <a href="notas-fiscais.html" class="btn btn-light text-dark rounded-0">Listar Notas Fiscais</a>
+                        <a href="notas-fiscais.html" class="btn text-dark rounded-0">Listar Notas Fiscais</a>
                     </div>
                 </div>
             </div>
             <!-- Card 5 -->
             <div class="col-md-4 mb-3">
-                <div class="card text-center shadow-sm border-0" style="background-color: #8612AD; color: #fff;">
+                <div class="card text-center">
                     <div class="card-body">
                         <i class="fas fa-box fa-3x mb-3"></i>
                         <h5 class="card-title">Estoque</h5>
-                        <a href="estoque.html" class="btn btn-light text-dark rounded-0">Listar Estoque</a>
+                        <a href="estoque.html" class="btn text-dark rounded-0">Listar Estoque</a>
                     </div>
                 </div>
             </div>
             <!-- Card 6 -->
             <div class="col-md-4 mb-3">
-                <div class="card text-center shadow-sm border-0" style="background-color: #70BDE8; color: #fff;">
+                <div class="card text-center">
                     <div class="card-body">
                         <i class="fas fa-cogs fa-3x mb-3"></i>
                         <h5 class="card-title">Parâmetros</h5>
-                        <a href="parametros.html" class="btn btn-light text-dark rounded-0">Listar Parâmetros</a>
+                        <a href="parametros.html" class="btn text-dark rounded-0">Listar Parâmetros</a>
                     </div>
                 </div>
             </div>
@@ -173,16 +200,14 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Custom JS -->
     <script src="assets/js/dashboard.js"></script>
-    <script>
-        function updateDateTime() {
-            const now = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-            document.getElementById('current-date-time').textContent = now.toLocaleDateString('pt-BR', options);
-        }
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
-    </script>
+
+
+
 </body>
+
 </html>
